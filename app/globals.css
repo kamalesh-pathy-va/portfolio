@@ -2,26 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.rotate {
+  animation: rotation 30s infinite linear;
+}
+
+.card {
+  z-index: 0;
+  transition: z-index 0.15s step-end;
+}
+
+.card:hover {
+  z-index: 10;
+  transition: z-index 0s step-start;
+}
+
+.bgMove {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/contactBG.jpg");
+  background-position: top;
+  animation: movebg 30s infinite;
+}
+
+.sendBtn:hover .iconMove svg {
+  animation: swipeIcon 500ms ease-in-out 150ms;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(156 163 175 / 1);
+  border-radius: 99rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes movebg {
+  50% {
+    background-position: bottom;
+  }
+}
+
+@keyframes swipeIcon {
+  0% {
+    transform: translateX(0%);
+  }
+  49% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
