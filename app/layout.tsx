@@ -4,12 +4,19 @@ import './globals.css'
 
 import Image from 'next/image'
 import bwImageMe from "@/public/BW_DAM_ME.jpg"
+import Navbar from '@/components/Navbar'
 
 const montserrat = Montserrat({subsets: ['latin']})
 
 export const metadata: Metadata = {
   title: 'Kamaleshpathy Portfolio',
   description: 'Portfolio website of Kamaleshpathy',
+  openGraph: {
+    siteName: 'Kamaleshpathy Portfolio',
+    title: 'Kamaleshpathy Portfolio',
+    description: 'Portfolio website of Kamaleshpathy',
+    url: "https://portfolio-kamalesh-pathy-va.vercel.app/",
+  }
 }
 
 export default function RootLayout({
@@ -23,6 +30,7 @@ export default function RootLayout({
         <div className='absolute inset-0 h-full overflow-hidden blur-3xl -z-10'>
           <Image src={bwImageMe} alt='kamaleshpathy posing near a dam' className='w-full h-1/4 object-cover object-top brightness-50 bg-no-repeat'/>
         </div>
+        <Navbar />
         {children}
       </body>
     </html>
