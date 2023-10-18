@@ -1,20 +1,20 @@
 "use client";
 
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import darkLinkText from '@/public/linkWhite.svg'
 import { BiLinkExternal } from 'react-icons/bi'
 import TechChips from './TechChips';
 import HoverInfo from './HoverInfo';
-import { ReactNode, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 
 
 interface CardProps {
   key: number;
   title: string;
-  techIcon: ReactNode[];
+  techIcon: any[];
   techName: string[];
-  imagePath: string;
+  imagePath: string | StaticImageData;
   demoURL: string;
   description: string;
 }
@@ -29,7 +29,7 @@ const DisplayCard = (props: CardProps) => {
       x: e.clientX,
       y: e.clientY,
       left,
-      top
+      top,
     });
   }
   
@@ -46,7 +46,7 @@ const DisplayCard = (props: CardProps) => {
 
           <div className='flex gap-2'>
             {
-              props.techIcon.map((TIcon, index) => <TechChips name={props.techName[index]} key={index}>{TIcon}</TechChips> )
+              props.techIcon.map((TIcon, index) => <TechChips name={props.techName[index]} icon={TIcon} key={index} /> )
             }
           </div>
         </div>
