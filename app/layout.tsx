@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: 'Kamaleshpathy Portfolio',
     description: 'Portfolio website of Kamaleshpathy',
     url: "https://portfolio-kamalesh-pathy-va.vercel.app/",
+    images: "/PortfolioSite.png",
   }
 }
 
