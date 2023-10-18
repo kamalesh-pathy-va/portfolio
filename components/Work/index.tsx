@@ -11,8 +11,8 @@ const Work = () => {
       title: "Spotify Clone",
       techIcon: [<BiLogoReact key={1} />, <BiLogoTailwindCss key={2} />],
       techName: ["React", "Tailwind CSS"],
-      demoURL: "https://nextjs.org/docs/app/building-your-application/optimizing/images",
-      description: "Lorem",
+      demoURL: "https://spotify-clone-pi-tan.vercel.app/",
+      description: "This is a Spotify web clone made with React.js, Redux toolkit and Tailwind CSS. This is a frontend-only project.",
       imagePath: spotifyClonePreview,
     },
     {
@@ -20,8 +20,8 @@ const Work = () => {
       title: "Watch Carousel",
       techIcon: [<BiLogoHtml5 key={1} />, <BiLogoCss3 key={2} />, <BiLogoJavascript key={3} />],
       techName:["HTML", "CSS", "JavaScript"],
-      demoURL: "https://nextjs.org/docs/app/building-your-application/optimizing/images",
-      description: "Lorem",
+      demoURL: "https://kamalesh-pathy-va.github.io/watch-carousel/",
+      description: "This is a Watch carousel site that displays watches and its features, created with plain HTML, CSS and JS",
       imagePath: watchCarousel,
     },
     {
@@ -29,8 +29,8 @@ const Work = () => {
       title: "Art Galary",
       techIcon: [<BiLogoHtml5 key={1} />, <BiLogoCss3 key={2} />],
       techName: ["HTML", "CSS", "JavaScript"],
-      demoURL: "https://nextjs.org/docs/app/building-your-application/optimizing/images",
-      description: "Lorem",
+      demoURL: "https://kamalesh-pathy-va.github.io/art-gallery-site/",
+      description: "This project was an attempt to re-create a website from design images. Made from plain HTML and CSS",
       imagePath: artGalary,
     }
   ]
