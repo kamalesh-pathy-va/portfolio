@@ -36,7 +36,7 @@ const Hero = () => {
       <div className='flex flex-col justify-center items-center gap-4'>
         <div className='flex gap-2 md:gap-4 xl:gap                      -10 flex-col w-3/4 sm:w-1/2 md:w-3/4 xl:w-3/5 items-center bg-neutral-800/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 rounded-md border-t border-neutral-500/70 border-l md:border-none'>
           <div className='flex flex-col md:flex-row gap-2 md:gap-4 xl:gap-10 justify-center items-center'>
-            <Image src={profileImg} alt='kamaleshpathy posing near a dam' className='w-full md:w-48 lg:w-72 xl:w-auto max-w-[20rem] rounded-md aspect-square object-cover grayscale hover:grayscale-0 transition' />
+            <Image src={profileImg} alt='kamaleshpathy posing near a dam' className='w-full md:w-48 lg:w-72 xl:w-auto max-w-[20rem] rounded-md aspect-square object-cover transition' />
             <span className='text-xl md:text-4xl lg:text-5xl text-center md:text-left xl:h-full'>
               Hello, I&apos;m <span className='font-bold'>Kamaleshpathy</span>, an aspiring software developer.
             </span>
