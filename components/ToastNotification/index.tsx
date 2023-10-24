@@ -20,12 +20,13 @@ const ToastNotification = () => {
   }, [toast.visible, dispatch]);
 
   return (
-    <div className={`fixed z-50 top-[80vh] md:top-[85vh] left-1/2 -translate-x-1/2 flex items-center justify-center gap-2  bg-neutral-50/70  text-neutral-900 font-bold py-2 px-4 rounded-md backdrop-blur-3xl transition-opacity delay-0 duration-300
+    <div className={`fixed z-50 top-[80vh] md:top-[85vh] left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 text-neutral-900 font-bold py-2 px-4 rounded-md backdrop-blur-3xl transition-opacity delay-0 duration-300
      ${toast.visible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} 
      ${toast.messageType === MessageType.SUCCESS && 'bg-green-200/70'}
      ${toast.messageType === MessageType.WARNING && 'bg-yellow-100/70'}
      ${toast.messageType===MessageType.DANGER && 'bg-red-300/70'}
      `}>
+      
       {toast.messageType === MessageType.SUCCESS &&
         <span className="text-2xl"><BiCheckCircle /></span>
       }
