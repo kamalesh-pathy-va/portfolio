@@ -1,10 +1,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react'
-import { BiSend, BiCheckCircle } from 'react-icons/bi'
+import { BiSend } from 'react-icons/bi'
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/app/store/store';
+import { MessageType, display } from '@/app/store/feature/toast/toastSlice';
 
 const FormComponent = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const [formData, setFormData] = useState(
     {
       name: '',
@@ -22,6 +27,11 @@ const FormComponent = () => {
       const response = await axios.post('/api/contact', formData);
       if (response.data.message === "success") {
         setSuccessSend(true);
+        dispatch(display({
+          message: 'Message sent!',
+          messageType: MessageType.SUCCESS,
+          visible: true,
+        }))
       }
       setFormData(
         {
@@ -32,6 +42,11 @@ const FormComponent = () => {
       )
     } catch (error) {
       console.log(error);
+      dispatch(display({
+        message: 'Failed to send',
+        messageType: MessageType.DANGER,
+        visible: true,
+      }))
     } finally {
       setProgress(false);
     }
@@ -78,22 +93,16 @@ const FormComponent = () => {
         ></textarea>
       </div>
 
-      <div className='self-end flex justify-center items-center gap-4'>
-        <p className={`${successSend? 'flex' : 'hidden'} items-center gap-1 text-green-400`}>
-          <span className='text-xl'><BiCheckCircle /></span>
-          <span>Message sent</span>
-        </p>
-        <button type="submit"
-          className='bg-neutral-300 text-neutral-800 p-3 rounded-md font-bold text-sm flex items-center justify-center gap-2
-          hover:bg-neutral-700 hover:text-neutral-200 transition sendBtn'
-          disabled={progress}
-        >
-          <span>{progress ? 'Sending...' : 'Send message'}</span>
-          {!progress &&
-            <span className='text-lg iconMove overflow-hidden'><span className=''><BiSend /></span></span>
-          }
-        </button>
-      </div>
+      <button type="submit"
+        className='self-end bg-neutral-300 text-neutral-800 p-3 rounded-md font-bold text-sm flex items-center justify-center gap-2
+        hover:bg-neutral-700 hover:text-neutral-200 transition sendBtn'
+        disabled={progress}
+      >
+        <span>{progress ? 'Sending...' : 'Send message'}</span>
+        {!progress &&
+          <span className='text-lg iconMove overflow-hidden'><span className=''><BiSend /></span></span>
+        }
+      </button>
     </form>
   )
 }
