@@ -1,5 +1,8 @@
 'use client';
+import { MessageType, display } from '@/app/store/feature/toast/toastSlice';
+import { AppDispatch } from '@/app/store/store';
 import React, { ReactNode } from 'react'
+import { useDispatch } from 'react-redux';
 
 interface callToAction{
   content: string;
@@ -8,12 +11,26 @@ interface callToAction{
 }
 
 const CallToActionBtn = (props: callToAction) => {
+  const dispatch = useDispatch<AppDispatch>()
   const handleCopyClipboard = () => {
     if (window.isSecureContext){
       navigator.clipboard.writeText("asokankamalesh@gmail.com")
-        .then(() => alert("Email ID copied to clipboard"))
-        .catch(() => alert("Error"))
+        .then(() => dispatch(display({
+          message: 'Email ID copied!',
+          messageType: MessageType.SUCCESS,
+          visible: true,
+        })))
+        .catch(() => dispatch(display({
+          message: 'Error',
+          messageType: MessageType.DANGER,
+          visible: true,
+        })))
     } else {
+      dispatch(display({
+        message: 'Mail app redirect...',
+        messageType: MessageType.WARNING,
+        visible: true,
+      }))
       window.location.href = "mailto:" + props.content;
     }
   }
