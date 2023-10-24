@@ -5,6 +5,7 @@ import './globals.css'
 import Image from 'next/image'
 import bwImageMe from "@/public/BW_DAM_ME.jpg"
 import Navbar from '@/components/Navbar'
+import ToastNotification from '@/components/ToastNotification'
 
 const montserrat = Montserrat({subsets: ['latin']})
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           <Image src={bwImageMe} alt='kamaleshpathy posing near a dam' className='w-full h-1/4 object-cover object-top brightness-50 bg-no-repeat'/>
         </div>
         <Navbar />
+        <ToastNotification />
         {children}
       </body>
     </html>
