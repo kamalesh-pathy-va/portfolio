@@ -14,7 +14,7 @@ const DownloadBtn = () => {
         messageType: MessageType.SUCCESS,
         visible: true,
       }))
-      window.location.href = "./ResumeKamaleshPathyVA_Updated_3.pdf"
+      window.location.href = "./ResumeKamaleshPathyVA_Updated_4 .pdf"
     }
   }
 
