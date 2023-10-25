@@ -1,4 +1,4 @@
-import { BiLogoReact, BiLogoTailwindCss, BiLogoHtml5, BiLogoCss3, BiLogoJavascript, BiLogoTypescript } from 'react-icons/bi'
+import { BiLogoReact, BiLogoTailwindCss, BiLogoHtml5, BiLogoCss3, BiLogoJavascript, BiLogoTypescript, BiLogoRedux } from 'react-icons/bi'
 import { SiNextdotjs } from 'react-icons/si'
 import spotifyClonePreview from '@/public/spotifyClonePreview.png'
 import watchCarousel from '@/public/watchCarousel.png'
@@ -11,18 +11,18 @@ const Work = () => {
     {
       key: 1,
       title: "Portfolio Site",
-      techIcon: [<SiNextdotjs key={1} />, <BiLogoTailwindCss key={2} />, <BiLogoTypescript key={3} />],
-      techName: ["Next.js", "Tailwind CSS", "Typescript"],
-      demoURL: "https://portfolio-bay-eight-19.vercel.app/",
+      techIcon: [<SiNextdotjs key={1} />, <BiLogoTailwindCss key={2} />, <BiLogoTypescript key={3} />, <BiLogoRedux key={4} />],
+      techName: ["Next.js", "Tailwind CSS", "Typescript", "Redux"],
+      demoURL: "https://www.kamaleshpathy.com",
       description: "My Portfolio site made with Next 13, Tailwind CSS and Typescript",
       imagePath: portfolio,
     },
     {
       key: 2,
       title: "Spotify Clone",
-      techIcon: [<BiLogoReact key={1} />, <BiLogoTailwindCss key={2} />],
-      techName: ["React", "Tailwind CSS"],
-      demoURL: "https://spotify-clone-pi-tan.vercel.app/",
+      techIcon: [<BiLogoReact key={1} />, <BiLogoTailwindCss key={2} />, <BiLogoRedux key={3} />],
+      techName: ["React", "Tailwind CSS", "Redux"],
+      demoURL: "https://clonespotify.kamaleshpathy.com",
       description: "This is a Spotify web clone made with React.js, Redux toolkit and Tailwind CSS. This is a frontend-only project.",
       imagePath: spotifyClonePreview,
     },

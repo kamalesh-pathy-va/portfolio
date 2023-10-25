@@ -1,7 +1,7 @@
 import TechItem from './TechItem'
 
 import {SiNextdotjs, SiMysql} from 'react-icons/si'
-import { BiLogoAws, BiLogoCPlusPlus, BiLogoCss3, BiLogoGit, BiLogoHtml5, BiLogoJavascript, BiLogoNodejs, BiLogoPostgresql, BiLogoPython, BiLogoReact, BiLogoTailwindCss, BiLogoTypescript } from 'react-icons/bi'
+import { BiLogoAws, BiLogoCPlusPlus, BiLogoCss3, BiLogoGit, BiLogoHtml5, BiLogoJavascript, BiLogoNodejs, BiLogoPostgresql, BiLogoPython, BiLogoReact, BiLogoRedux, BiLogoTailwindCss, BiLogoTypescript } from 'react-icons/bi'
 import {DiLinux} from 'react-icons/di'
 
 const TechStack = () => {
@@ -21,6 +21,12 @@ const TechStack = () => {
     {
       icon: <BiLogoTailwindCss />,
       name: 'Tailwind CSS',
+      rating: '3',
+      level: 'Intermediate',
+    },
+    {
+      icon: <BiLogoRedux />,
+      name: 'Redux',
       rating: '3',
       level: 'Intermediate',
     },
