@@ -7,6 +7,7 @@ import bwImageMe from "@/public/BW_DAM_ME.jpg"
 import Navbar from '@/components/Navbar'
 import ToastNotification from '@/components/ToastNotification'
 import Providers from './store/Providers'
+import TRPCProvider from './_trpc/TRPCProvider'
 
 const montserrat = Montserrat({subsets: ['latin']})
 
@@ -30,14 +31,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} flex flex-col justify-center items-center relative`}>
-        <Providers>
-          <div className='absolute inset-0 h-full overflow-hidden blur-3xl -z-10'>
-            <Image src={bwImageMe} alt='kamaleshpathy posing near a dam' className='w-full h-1/4 object-cover object-top brightness-50 bg-no-repeat'/>
-          </div>
-          <Navbar />
-          <ToastNotification />
-          {children}
-        </Providers>
+        <TRPCProvider>
+          <Providers>
+            <div className='absolute inset-0 h-full overflow-hidden blur-3xl -z-10'>
+              <Image src={bwImageMe} alt='kamaleshpathy posing near a dam' className='w-full h-1/4 object-cover object-top brightness-50 bg-no-repeat'/>
+            </div>
+            <Navbar />
+            <ToastNotification />
+            {children}
+          </Providers>
+        </TRPCProvider>
       </body>
     </html>
   )

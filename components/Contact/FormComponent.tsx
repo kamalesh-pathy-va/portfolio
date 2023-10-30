@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import { BiSend } from 'react-icons/bi'
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/app/store/store';
 import { MessageType, display } from '@/app/store/feature/toast/toastSlice';
+import { trpc } from '@/app/_trpc/client';
 
 const FormComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const contactSubmit = trpc.contactSubmit.useMutation();
 
   const [formData, setFormData] = useState(
     {
@@ -24,22 +25,23 @@ const FormComponent = () => {
     e.preventDefault();
     try {
       setProgress(true);
-      const response = await axios.post('/api/contact', formData);
-      if (response.data.message === "success") {
+
+      const response = await contactSubmit.mutateAsync(formData);
+      if (response.status === 'success') {
         setSuccessSend(true);
         dispatch(display({
           message: 'Message sent!',
           messageType: MessageType.SUCCESS,
           visible: true,
         }))
+        setFormData(
+          {
+            name: '',
+            email: '',
+            message: ''
+          }
+        )
       }
-      setFormData(
-        {
-          name: '',
-          email: '',
-          message: ''
-        }
-      )
     } catch (error) {
       console.log(error);
       dispatch(display({
