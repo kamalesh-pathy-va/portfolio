@@ -9,7 +9,7 @@ import { trpc } from '@/app/_trpc/client';
 
 const FormComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const contactSubmit = trpc.contactSubmit.useMutation();
+  const {mutateAsync: contactSubmit} = trpc.contactSubmit.useMutation();
 
   const [formData, setFormData] = useState(
     {
@@ -26,7 +26,7 @@ const FormComponent = () => {
     try {
       setProgress(true);
 
-      const response = await contactSubmit.mutateAsync(formData);
+      const response = await contactSubmit(formData);
       if (response.status === 'success') {
         setSuccessSend(true);
         dispatch(display({
