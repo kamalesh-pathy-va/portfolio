@@ -8,9 +8,9 @@ import { MessageType, display } from '@/app/store/feature/toast/toastSlice';
 import { trpc } from '@/app/_trpc/client';
 
 const FormComponent = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const {mutateAsync: contactSubmit} = trpc.contactSubmit.useMutation();
-
+  const dispatch = useDispatch<AppDispatch>()
+  const [successSend, setSuccessSend] = useState(false)
+  const {mutateAsync: contactSubmit, isLoading: progress} = trpc.contactSubmit.useMutation()
   const [formData, setFormData] = useState(
     {
       name: '',
@@ -18,14 +18,10 @@ const FormComponent = () => {
       message: ''
     }
   )
-  const [successSend, setSuccessSend] = useState(false)
-  const [progress, setProgress] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      setProgress(true);
-
       const response = await contactSubmit(formData);
       if (response.status === 'success') {
         setSuccessSend(true);
@@ -49,8 +45,6 @@ const FormComponent = () => {
         messageType: MessageType.DANGER,
         visible: true,
       }))
-    } finally {
-      setProgress(false);
     }
   }
 
