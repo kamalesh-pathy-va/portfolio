@@ -1,3 +1,4 @@
+import Challenges from '@/components/Challenges'
 import Contact from '@/components/Contact'
 import Hero from '@/components/Hero'
 import TechStack from '@/components/TechStack'
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <Work />
       <TechStack />
+      <Challenges />
       <Contact />
     </main>
   )

@@ -1,6 +1,7 @@
 import { publicProcedure, router } from "./trpc";
 import { z } from 'zod';
 import nodemailer from 'nodemailer';
+import { challengesRoute } from "./challenges";
 
 
 export const appRouter = router({
@@ -39,6 +40,7 @@ export const appRouter = router({
         return { status: 'fail' };
       }
     }),
+  challenges: challengesRoute,
 });
 
 export type AppRouter = typeof appRouter;
