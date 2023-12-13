@@ -20,7 +20,7 @@ const TableItem = ({serialNo, tag, title, itemURL, problemURL}: TableData) => {
       </div>
       <div className='hidden md:flex items-center justify-end gap-2'>{tag.map((eachTag, index) => <Tags tagName={eachTag} key={index} />)}</div>
       <div className='flex items-center justify-center'>
-        <Link href={`/challenges#${itemURL}`} className='group w-3/4 mx-1 bg-neutral-300 text-neutral-800 p-3 rounded-md font-bold text-sm'>
+        <Link href={`/challenges/${itemURL}`} className='group w-3/4 mx-1 bg-neutral-300 text-neutral-800 p-3 rounded-md font-bold text-sm'>
           <span className='flex items-center justify-center gap-2 translate-x-4 group-hover:translate-x-0 transition-transform'>
             <span>View</span>
             <span className='text-xl invisible group-hover:visible transition-[visibility]'><BiRightArrowAlt /></span>
