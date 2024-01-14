@@ -22,22 +22,29 @@ const ChallengesList = () => {
     return a.title.localeCompare(b.title)
   }
 
+  const [showList, setShowList] = useState(false);
+
   return (
-    <div className="flex flex-col gap-2 bg-neutral-800 h-full p-2 rounded-md">
-      <div className="flex gap-2 text-sm font-semibold p-2 bg-neutral-900/70 rounded-md">
-        <FilterChips name='All' setValue={setFilter} filter={filter} />
-        <FilterChips name='DSA' setValue={setFilter} filter={filter} />
-        <FilterChips name='UI/UX' setValue={setFilter} filter={filter} />
+    <>
+      <button onClick={() => setShowList(prev => !prev)}
+        className="flex md:hidden justify-center w-full bg-neutral-900 font-semibold p-2 transition mb-2 rounded-md">
+        {showList? "Hide" : "Show"} challenge list
+      </button>
+      <div className={`md:flex flex-col gap-2 bg-neutral-900 h-full p-2 rounded-md ${showList? "flex": "hidden"}`}>
+        <div className="flex gap-2 text-sm font-semibold p-2 bg-neutral-800/70 rounded-md">
+          <FilterChips name='All' setValue={setFilter} filter={filter} />
+          <FilterChips name='DSA' setValue={setFilter} filter={filter} />
+        </div>
+        <div className="overflow-y-scroll hide-scrollbar p-2 bg-neutral-800/70 rounded-md">
+          {
+            dataLoading ? <div className='flex justify-center items-center text-5xl mt-4 font-bold'><span className="animate-spin"><CgSpinner /></span></div> :
+              filter === 'All' ? data?.sort(compareString).map(item => <ChallengeItem key={item.id} title={item.title} problemID={item.id} toggle={setShowList} />) :
+                filter === 'UI/UX' ? null :
+                data?.filter(item => !item.tag.includes('UI/UX')).sort(compareString).map(item => <ChallengeItem key={item.id} title={item.title} problemID={item.id} toggle={setShowList} />)
+          }
+        </div>
       </div>
-      <div className="overflow-y-auto hide-scrollbar p-2 bg-neutral-900/70 rounded-md">
-        {
-          dataLoading ? <div className='flex justify-center items-center text-5xl mt-4 font-bold'><span className="animate-spin"><CgSpinner /></span></div> :
-            filter === 'All' ? data?.sort(compareString).map(item => <ChallengeItem key={item.id} title={item.title} problemID={item.id} />) :
-              filter === 'UI/UX' ? data?.sort(compareString).filter(item => item.tag.includes('UI/UX')).map(item => <ChallengeItem key={item.id} title={item.title} problemID={item.id} />) :
-              data?.filter(item => !item.tag.includes('UI/UX')).sort(compareString).map(item => <ChallengeItem key={item.id} title={item.title} problemID={item.id} />)
-        }
-      </div>
-    </div>
+    </>
   )
 }
 
