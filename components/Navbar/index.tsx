@@ -27,9 +27,13 @@ const Navbar = () => {
       text: "Contact"
     },
     {
+      url: "/challenges/3d2e499c-b0ae-46d1-9873-a129599b4fc2",
+      text: "Challenges"
+    },
+    {
       url: "/about",
       text: "About"
-    }
+    },
   ]
 
   const [toggleNav, setToggleNav] = useState(false)
