@@ -1,0 +1,133 @@
+.timeline {
+  width: 80%;
+  margin: auto;
+}
+
+.line-container {
+  height: 60px;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #fff0, #ffff 60%, #fff0);
+  position: relative;
+  top: 100%;
+}
+
+.line-items {
+  position: absolute;
+  opacity: 0;
+  transition: position 500ms ease-out, opacity 500ms ease-out,
+    left 500ms ease-out, transform 500ms ease-out;
+  cursor: pointer;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column-reverse;
+  bottom: 0;
+}
+
+.content-container {
+  margin-block-end: 15rem;
+}
+
+.content-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  opacity: 0;
+  transition: position 500ms ease-out, opacity 500ms ease-out,
+    left 500ms ease-out, transform 500ms ease-out;
+  cursor: pointer;
+  pointer-events: none;
+  border-inline: 2px solid;
+  border-block-start: 2px solid;
+  border-image: linear-gradient(to bottom, #ffff, #fff0 70%) 1 100%;
+  border-image-slice: 1;
+}
+
+.joining-line {
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(to bottom, #fff0 20%, #ffff);
+  bottom: 100%;
+}
+.circle {
+  position: absolute;
+  width: 10px;
+  aspect-ratio: 1;
+  background-color: white;
+  border-radius: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.active-item {
+  pointer-events: all;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
+.next-item,
+.previous-item {
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+.content-container .next-item,
+.content-container .previous-item {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.next-item {
+  left: 85%;
+  top: 50%;
+  transform: translateX(-85%);
+}
+
+.previous-item {
+  left: 15%;
+  top: 50%;
+  transform: translateX(-15%);
+}
+
+.item-left {
+  left: 0%;
+  top: 50%;
+  transform: translateX(0%);
+  opacity: 0;
+}
+
+.item-right {
+  left: 100%;
+  top: 50%;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.content-container {
+  position: relative;
+  top: 50px;
+}
+
+.period {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description {
+  text-align: center;
+}
