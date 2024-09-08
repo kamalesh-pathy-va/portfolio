@@ -37,7 +37,7 @@ const Work = () => {
     },
     {
       key: 4,
-      title: "Art Galary",
+      title: "Art Gallery",
       techIcon: [<BiLogoHtml5 key={1} />, <BiLogoCss3 key={2} />],
       techName: ["HTML", "CSS", "JavaScript"],
       demoURL: "https://kamalesh-pathy-va.github.io/art-gallery-site/",
