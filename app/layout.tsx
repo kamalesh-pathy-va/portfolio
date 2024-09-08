@@ -9,7 +9,10 @@ import ToastNotification from '@/components/ToastNotification'
 import Providers from './store/Providers'
 import TRPCProvider from './_trpc/TRPCProvider'
 
-const montserrat = Montserrat({subsets: ['latin']})
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Kamaleshpathy Portfolio',

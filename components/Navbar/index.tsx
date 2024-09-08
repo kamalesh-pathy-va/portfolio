@@ -8,8 +8,9 @@ import { BiMenu } from 'react-icons/bi'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const mrs_sheppards = Mrs_Sheppards({
-  weight: "400",
   subsets: ['latin'],
+  weight: "400",
+  display: 'swap',
 })
 
 const Navbar = () => {
