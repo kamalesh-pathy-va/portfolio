@@ -15,7 +15,7 @@ interface LineItems {
 const Timeline = () => {
   const [activeItem, setActiveItem] = useState<number>(3);
   const lineItems: LineItems[] = [
-    { id: 3, content: "Prodapt", altText: "Prodapt Logo", period: "2024-Present", title: "Trainee", desc: "Working as a trainee in ServiceNow tech-stack." },
+    { id: 3, content: "Prodapt", altText: "Prodapt Logo", period: "2024-Present", title: "Software Engineer", desc: "A software engineer working with ServiceNow" },
     { id: 2, content: "RIT", altText: "RIT Logo", period: "2019-2023", title: "Under Graduation", desc: "Passed out with 8.36 CGPA in Electronics and Communication Engineering." },
     { id: 1, content: "DAV", altText: "DAV Logo", period: "2018-2019", title: "HSC", desc: "Completed HSC with 72.83% in Computer science specialization." }
   ]
