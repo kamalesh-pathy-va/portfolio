@@ -6,11 +6,13 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/app/store/store';
 import { MessageType, display } from '@/app/store/feature/toast/toastSlice';
 import { trpc } from '@/app/_trpc/client';
+import { TRPCClientError } from '@trpc/client';
+import type { AppRouter } from '@/server';
 
 const FormComponent = () => {
   const dispatch = useDispatch<AppDispatch>()
   const [successSend, setSuccessSend] = useState(false)
-  const {mutateAsync: contactSubmit, isLoading: progress} = trpc.contactSubmit.useMutation()
+  const { mutateAsync: contactSubmit, isLoading: progress } = trpc.contactSubmit.useMutation()
   const [formData, setFormData] = useState(
     {
       name: '',
@@ -38,13 +40,28 @@ const FormComponent = () => {
           }
         )
       }
-    } catch (error) {
-      console.log(error);
-      dispatch(display({
-        message: 'Failed to send',
-        messageType: MessageType.DANGER,
-        visible: true,
-      }))
+    } catch (error: unknown) {
+      if (error instanceof TRPCClientError) {
+        try {
+          dispatch(display({
+            message: JSON.parse(error.message)[0].message ?? "Failed to send",
+            messageType: MessageType.DANGER,
+            visible: true,
+          }))
+        } catch (jsonError) {
+          dispatch(display({
+            message: "Failed to send",
+            messageType: MessageType.DANGER,
+            visible: true,
+          }))
+        }
+      } else {
+        dispatch(display({
+          message: "Failed to send",
+          messageType: MessageType.DANGER,
+          visible: true,
+        }))
+      }
     }
   }
 
@@ -60,7 +77,7 @@ const FormComponent = () => {
         <label htmlFor="name" className='font-bold text-lg'>Name</label>
         <input type="text" id='name'
           className='p-2 outline-none bg-neutral-400/50 rounded-md text-lg placeholder:text-neutral-300'
-          placeholder="What's your name"
+          placeholder="What should I call you?"
           required
           onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
           value={formData.name}
@@ -71,7 +88,7 @@ const FormComponent = () => {
         <label htmlFor="email" className='font-bold text-lg'>E-mail</label>
         <input type="email" id="email"
           className='p-2 outline-none bg-neutral-400/50 rounded-md text-lg placeholder:text-neutral-300'
-          placeholder='And your e-mail'
+          placeholder='How can I reach you?'
           required
           onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
           value={formData.email}
@@ -82,7 +99,7 @@ const FormComponent = () => {
         <label htmlFor="message" className='font-bold text-lg'>Message</label>
         <textarea id="message" cols={30} rows={7}
           className='p-2 outline-none bg-neutral-400/50 rounded-md text-lg placeholder:text-neutral-300'
-          placeholder='Leave me a message'
+          placeholder='Feel free to drop an Hi!'
           required
           onChange={e => setFormData(prev => ({ ...prev, message: e.target.value }))}
           value={formData.message}

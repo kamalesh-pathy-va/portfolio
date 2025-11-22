@@ -7,9 +7,12 @@ import { challengesRoute } from "./challenges";
 export const appRouter = router({
   contactSubmit: publicProcedure
     .input(z.object({
-      name: z.string(),
-      email: z.string(),
-      message: z.string(),
+      name: z.string()
+        .trim()
+        .min(3, "Enter a valid Name")
+        .regex(/^[\p{L}\s]+$/u, "Name must contain only letters"),
+      email: z.string().trim().email("Enter a valid email"),
+      message: z.string().trim().min(2, "Enter a proper message"),
     }))
     .mutation(async (req) => {
       const { input } = req;
