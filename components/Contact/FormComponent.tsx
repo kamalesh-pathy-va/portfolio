@@ -7,7 +7,6 @@ import { AppDispatch } from '@/app/store/store';
 import { MessageType, display } from '@/app/store/feature/toast/toastSlice';
 import { trpc } from '@/app/_trpc/client';
 import { TRPCClientError } from '@trpc/client';
-import type { AppRouter } from '@/server';
 
 const FormComponent = () => {
   const dispatch = useDispatch<AppDispatch>()
